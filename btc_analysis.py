@@ -1,11 +1,11 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from datetime import datetime
 
 from scipy.optimize import minimize
-from nltk.sentiment import SentimentIntensityAnalyzer
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 
@@ -14,16 +14,21 @@ def calculate_fundamental_component(df, w):
     """
     Calculates fundamental component using the given dataframe and weights.
     """
+    
     df['F_t'] = w[0] + w[1]*df['hash_rate'] + w[2]*df['transaction_volume'] + w[3]*df['mining_difficulty'] + w[4]*df['inflation_rate']
     return df['F_t'], df
 
 
-def calculate_speculative_component(df, alpha, beta, S_0):
+def calculate_speculative_component(df, alpha, beta, S_0=0):
     S_t = [S_0]
     len_df = sum(1 for _ in df.iterrows())
+    initial_index = 0
     for i, row in df.iterrows():
-        S_t.append(alpha[0]*row.MA + alpha[1]*row.RSI + alpha[2]*row.SO + alpha[3]*row.bitcoin_trend + beta*S_t[i-1])
-        if i >= len_df - 2: break
+        initial_index = i
+        break
+    for i, row in df.iterrows():
+        S_t.append(alpha[0]*row.MA + alpha[1]*row.RSI + alpha[2]*row.SO + alpha[3]*row.bitcoin_trend + beta*S_t[i-initial_index-1])
+        if i >= initial_index + len_df - 2: break
     
     df['S_t'] = S_t
     
@@ -234,5 +239,66 @@ def plot_technical_sentiment_indicators(df, k):
     plt.show()
     
     return df
+
+def calculate_mse_heterogeneous_model(df, weights_fundamental, weights_speculative, beta, S_0):
+    F_t, df = calculate_fundamental_component(df, weights_fundamental)
+    S_t, df = calculate_speculative_component(df, weights_speculative, beta, S_0)
+    df['P_t'], df = calculated_predicted_price(df, F_t, S_t)
+    mse = ((df['Price'] - df['P_t'])**2).mean()
+    return mse
+
+
+def optimize_parameters(df, initial_guess_fundamental, initial_guess_speculative, initial_guess_beta, S_0, method='Nelder-Mead'):
+    """Here we explain the optimization process in details:
+    
+    1. We define the objective function, which is the MSE.
+    2. We define the initial guess for the weights of the fundamental component, the weights of the speculative component, and the beta.
+    3. We use the minimize function from scipy.optimize to minimize the objective function.
+    4. scipy.optimize.minimize takes the objective function, the initial guess, and the optimization method as arguments.
+    5. minimize uses the Nelder-Mead method by default, but we can also use other methods such as BFGS.
+        
+    Args:
+        df (_type_): _description_
+        initial_guess_fundamental (_type_): _description_
+        initial_guess_speculative (_type_): _description_
+        initial_guess_beta (_type_): _description_
+        S_0 (_type_): _description_
+        method (str, optional): _description_. Defaults to 'Nelder-Mead'.
+    """
+    def objective_function(parameters):
+        weights_fundamental = parameters[:5]
+        weights_speculative = parameters[5:9]
+        S_0 = parameters[9]
+        beta = parameters[10]
+        mse = calculate_mse_heterogeneous_model(df, weights_fundamental, weights_speculative, beta, S_0)
+        return mse
+    
+    initial_guess = np.concatenate([initial_guess_fundamental, initial_guess_speculative, [S_0], [initial_guess_beta]])
+    
+    result = minimize(objective_function, initial_guess, method=method)
+    
+    weights_fundamental = result.x[:5]
+    weights_speculative = result.x[5:9]
+    S_0 = result.x[9]
+    beta = result.x[10]
+    
+    return weights_fundamental, weights_speculative, S_0, beta
+
+
+def evaluate_model(df):
+    mae = mean_absolute_error(df['Price'], df['P_t'])
+    mse = mean_squared_error(df['Price'], df['P_t'], squared=True)
+    rmse = mean_squared_error(df['Price'], df['P_t'], squared=False)
+    print(f"Mean Absolute Error (MAE): {mae}")
+    print(f"Root Mean Squared Error (MSE): {mse}")
+    print(f"Root Mean Squared Error (RMSE): {rmse}")
     
     
+def plot_predicted_prices(df):
+    plt.figure(figsize=(12, 6))
+    plt.plot(df['time'], df['Price'], label='Actual price')
+    plt.plot(df['time'], df['P_t'], label='Predicted price')
+    plt.xlabel('Date')
+    plt.ylabel('Price (USD)')
+    plt.legend()
+    plt.show()
