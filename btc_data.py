@@ -10,6 +10,19 @@ def read_data(file_path):
 def clean_and_transform_data(btc_full_df, btc_google_trend_df):
     """
     Cleans and transforms the data for further processing.
+    6. Collect necessary data for estimating the fundamental component of Bitcoin prices:
+
+    The inflation rate and interest rate of Bitcoin can be calculated using the following data:
+
+    - `IssTotNtv`: The total number of Bitcoins that have been mined since the creation of the Bitcoin network.
+    - `SplyCur`: The current circulating supply of Bitcoin.
+
+    To calculate the inflation rate, we can use the following formula:
+
+    ```inflation_rate = IssTotNtv / SplyCur)```
+
+    This formula calculates the percentage increase in the total supply of Bitcoin since its creation, and subtracts 1 to convert it to a percentage increase per year. As of February 23, 2023, the inflation rate of Bitcoin is approximately 1.58%.
+
     """
     time = btc_full_df['time']
     price = btc_full_df['PriceUSD']
