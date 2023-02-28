@@ -1,1 +1,5 @@
-datasets
+datasets/private
+__pycache__/
+*.pyc
+datasets/private/
+models/*.pkl
