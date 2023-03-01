@@ -1,0 +1,66 @@
+- 1930s-1940s, Elliott Wave Model, Ralph Nelson Elliott
+- 1936, Liquidity Preference Theory, John Maynard Keynes
+- 1938, Dividend Discount Model (DDM), John Burr Williams
+- 1940s-1950s, Monte Carlo Simulation Models, Stanislaw Ulam, John von Neumann
+- 1952, Markowitz's Portfolio Theory, Harry Markowitz
+- 1953, Random Walk Model, Maurice Kendall
+- 1956, Adaptive Expectations Hypothesis, Phillip Cagan
+- 1956, Gordon Growth Model, Myron Gordon, Eli Shapiro
+- 1958, Modigliani and Miller's Capital Structure model, Franco Modigliani and Merton Miller
+- 1958, Modigliani-Miller theorem (MM), Franco Modigliani and Merton Miller
+- 1958, Phillips Curve Model, Alban William Phillips
+- 1960, Kalman Filter Models, Rudolf Emil Kalman
+- 1960s-1970s, Efficient Market Hypothesis (EMH), Eugene Fama
+- 1960s, Capital Asset Pricing Model (CAPM), William Sharpe, John Lintner, and Jan Mossin
+- 1961, Miller and Modigliani's Dividend Irrelevance Theory, Merton Miller and Franco Modigliani
+- 1963, Fractal Analysis, Benoit Mandelbrot
+- 1970, Akerlof's Market for Lemons model, George Akerlof
+- 1972, Rational Expectations Hypothesis, Robert Lucas Jr.
+- 1973, Black-Scholes Option Pricing Model, Fischer Black and Myron Scholes
+- 1973, Merton Model, Robert Merton
+- 1973, Random Walk Theory, Burton Malkiel
+- 1974, Barro's Ricardian Equivalence Model, Robert Barro
+- 1974, Merton's Structural Credit Risk Model, Robert Merton
+- 1976, Arbitrage Pricing Theory (APT), Stephen Ross
+- 1976, Jensen and Meckling's Agency Theory, Michael Jensen and William Meckling
+- 1976, Jump-diffusion models, Robert Merton
+- 1977, Real options theory, Stewart Myers
+- 1977, Vasicek Model, Oldrich Vasicek
+- 1979, Binomial Option Pricing Model, Cox-Ross-Rubinstein
+- 1980, Grossman and Stiglitz's Information Asymmetry model, Sanford Grossman and Joseph Stiglitz
+- 1980, Hansen and Sargent's Uncertainty Models, Lars Hansen and Thomas Sargent
+- 1981, International capital asset pricing model (ICAPM), René Stulz
+- 1982, Real Business Cycle Theory, Finn Kydland and Edward Prescott
+- 1983, Diamond and Dybvig's Bank Run Model, Douglas Diamond and Philip Dybvig
+- 1985, Cox-Ingersoll-Ross (CIR) model, John Cox, Jonathan Ingersoll, and Stephen Ross
+- 1985, New Keynesian Economics, N. Gregory Mankiw
+- 1986, Ho-Lee Model, Thomas Ho, Sang Bin Lee
+- 1989, Wavelet Analysis, Stephane Mallat
+- 1990s-2000s, Network Analysis Models, Mark Newman, Albert-László Barabási, Duncan J. Watts
+- 1992, Fama-French Three-Factor Model, Eugene Fama, Kenneth French
+- 1992, Minsky Model of Financial Instability, Hyman Minsky
+- 1993, Heston Model, Steven Heston
+- 1993, Metcalfe's Law Model, Robert Metcalfe
+- 1993, Stochastic volatility models, Steven Heston
+- 1993, Taylor's Monetary Policy Rules, John Taylor
+- 1994, Long-term capital management (LTCM) model, Robert Merton and Myron Scholes
+- 1996, Log-Periodic Power Law (LPPL) Model, Didier Sornette
+- 1997, Robert Shiller, Daniel Kahneman, Amos Tversky, Richard Thaler, Behavioral Finance Models
+- 1999, Asset pricing models with habit formation, John Campbell and John Cochrane
+- 1999, Bernanke and Gertler's Financial Accelerator Model, Ben Bernanke and Mark Gertler
+- 1999, Informational overshooting, booms, and crashes, Zeira
+- 2000, Johansen-Ledoit-Sornette (JLS) Model, Peter Johansen, Olivier Ledoit, Didier Sornette
+- 2000, Predicting financial crashes using discrete scale invariance, Johansen and Sornette
+- 2000, The confidence index model, Shiller
+- 2001, Dynamic Conditional Correlation (DCC) Model, Robert Engle, Kevin Sheppard
+- 2001, Shocks, crashes and bubbles in financial markets, Johansen and Sornette
+- 2002, The bubble of the millennium: a diachronic analysis of the S&P 500 index, Johansen and Sornette
+- 2003, The volatility feedback model, Shiller
+- 2004, Fearless versus fearful speculative financial bubbles, Andersen and Sornette
+- 2004, Stock market crashes are outliers, Johansen and Sornette
+- 2005, Finite-Time Singularity (FTS) Model, Domenico Delli Gatti
+- 2008, Network Models of Financial Contagion, Diego Garlaschelli
+- 2013, Testing for financial crashes using the log-periodic power law model, Bree and Joseph
+- 2014, LPPL model with mean-reverting residuals, Lin et al.
+- 2017, The narrative economics model, Shiller
+- 2019, Stock-to-flow Model, PlanB
