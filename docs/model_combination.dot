@@ -1,0 +1,65 @@
+digraph {
+    beauty: true,
+    
+    ANN -> GARCH;
+    ANN -> LSTM;
+    BR -> VAR;
+    BR -> ARIMA;
+    VAR -> GARCH;
+    VAR -> ARIMA;
+    ARIMA -> VAR;
+    ARIMA -> GARCH;
+    GARCH -> VAR;
+    GARCH -> ARIMA;
+    MSR -> RF;
+    MSR -> LSTM;
+    MSR -> SVR;
+    SVR -> LSTM;
+    SVR -> MSGARCH;
+    LPPL -> RF;
+    LPPL -> LSTM;
+    LPPL -> SVR;
+    STL -> LSTM;
+    STL -> SVR;
+    STL -> MSGARCH;
+    MGARCH -> ARIMA;
+    MGARCH -> VAR;
+    MGARCH -> GARCH;
+    BNN -> LSTM;
+    BNN -> RF;
+    BNN -> VAR;
+    LTSM -> SVR;
+    LTSM -> VAR;
+    HAM -> ARIMA;
+    HAM -> VAR;
+    HAM -> GARCH;
+    CAPE -> VAR;
+    CAPE -> LSTM;
+    CAPE -> BNN;
+    MSGARCH -> SVR;
+    MSGARCH -> LSTM;
+    MSGARCH -> RF;
+    RF -> ARIMA;
+    RF -> SVR;
+    P -> ARIMA;
+    P -> VAR;
+    P -> RF;
+
+    // update size
+
+    //ranksep = 1;
+    //nodesep = 0.5;
+    //rankdir=LR;
+    
+    // make the node bigger
+
+    {
+        LSTM[height=2, width=2];
+        ARIMA[height=2, width=2];
+        VAR[height=2, width=2];
+
+        GARCH[height=1.5, width=1.5];
+        SVR[height=1.5, width=1.5];
+        RF[height=1.5, width=1.5];
+    }
+}   
