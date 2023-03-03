@@ -24,6 +24,12 @@ We also develop a separate implementation and a separate notebook for each model
 
 Our goal is to provide those models, datasets and analysis for the community.
 
+## Values
+
+- Open Source: https://github.com/aminblm/bitcoin-markets
+- Decentralized finance (BTC): bc1qdyxcelvt4sg254xkscjw99x67cngdcymq86c7m.
+- Slack community: https://join.slack.com/t/opencryptofinance/shared_invite/zt-1q76mqb02-OsAEZ_5A_8qc94aHmMIKLg
+
 ## Models
 
 ## Beauty Contest model of Keynes, 1936
