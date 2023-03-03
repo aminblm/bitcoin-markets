@@ -18,7 +18,7 @@ You can find the full list of notebooks and models in here:
 
 - [Integrating Interdisciplinary Models for Precise Forecasting of Bitcoin Market Prices: A Fusion of Financial, Economic, Time-Series, and Machine and Deep Learning Approaches](notebooks/Combining%20Financial,%20Economic,%20Time-Series,%20Mathematical%20and%20Deep%20Learning%20Models%20for%20Accurate%20Forecasting%20of%20Bitcoin%20Market%20Prices.ipynb)
 
-- [Combining Economic Models for Bitcoin Market Forecasting: A Comparative Analysis](notebooks/Economic%20Models%20for%20Bitcoin%20Market%20Forecasting.ipynb)
+- [Combining Economic Models for Bitcoin Market Forecasting: A Comparative Analysis](notebooks/Economic%20Models%20for%20Bitcoin%20Market%20Forecast.ipynb)
 
 We also develop a separate implementation and a separate notebook for each model in this project.
 
