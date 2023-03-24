@@ -8,6 +8,11 @@ from datetime import datetime
 from scipy.optimize import minimize
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
+from scipy.signal import find_peaks
+import matplotlib.pyplot as plt
+from btc_data import *
+
+data = load_data()
 
 
 def calculate_fundamental_component(df, w):
@@ -301,4 +306,50 @@ def plot_predicted_prices(df):
     plt.xlabel('Date')
     plt.ylabel('Price (USD)')
     plt.legend()
+    plt.show()
+
+def plot_bubbles(data=data, 
+                distance=200,
+                prominence=100,
+                subplot_width=4,
+                subplot_height=3, 
+                subplot_cols=3):
+
+    # Find peak prices with a distance of 200 and a prominence of 100
+    peaks, _ = find_peaks(data['Price'], distance=distance, prominence=prominence)
+
+    # Create subplots for each bubble
+    num_bubbles = len(peaks)
+    subplot_rows = (num_bubbles - 1) // subplot_cols + 1  # Calculate number of subplot rows based on number of bubbles and subplot columns
+    fig, axes = plt.subplots(nrows=subplot_rows, ncols=subplot_cols, figsize=(subplot_width*subplot_cols, subplot_height*subplot_rows))
+
+    for i, peak_index in enumerate(peaks):
+        # Define the date range for the bubble
+        start_index = max(0, peak_index-distance)
+        end_index = min(len(data)-1, peak_index+distance)
+
+        # Subset the data to the bubble range
+        bubble_data = data.iloc[start_index:end_index+1].reset_index(drop=True)
+
+        # Find the highest peak in the bubble
+        max_peak_index = bubble_data['Price'].idxmax()
+
+        # Calculate subplot coordinates
+        subplot_row = i // subplot_cols
+        subplot_col = i % subplot_cols
+
+        # Plot the data with the highest peak highlighted in red
+        ax = axes[subplot_row, subplot_col]
+        ax.plot(bubble_data['date'], bubble_data['Price'])
+        ax.scatter(bubble_data['date'][max_peak_index], bubble_data['Price'][max_peak_index], color='red')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Price')
+        ax.set_title('Bubble {} - Peak Price: {}'.format(i+1, bubble_data['Price'][max_peak_index]))
+
+        plt.setp(ax.get_xticklabels(), rotation=45, ha="right")
+    # Remove unused subplots
+    for i in range(num_bubbles, subplot_rows*subplot_cols):
+        fig.delaxes(axes[i // subplot_cols, i % subplot_cols])
+
+    plt.tight_layout()
     plt.show()
